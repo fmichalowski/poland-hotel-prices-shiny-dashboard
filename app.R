@@ -8,7 +8,7 @@ library(bslib)
 library(rsconnect)
 library(rlang)
 
-# Wczytywanie danych
+# Loading data
 path1 <- as_string(setwd(getwd()))
 path2 <- as_string('/data.xlsx')
 path <- as_string(paste(path1, path2, sep = ''))
@@ -16,7 +16,7 @@ data <- read_excel(path)
 dataOg <- data
 dataOg$City <- with(dataOg, reorder(City, Reviews, sum, decreasing = TRUE))
 
-# Podział danych na podgrupy
+# Splitting data into the subsets
 dataWa <- data[data$City == 'Warsaw',]
 dataKr <- data[data$City == 'Cracow',]
 dataWr <- data[data$City == 'Wroclaw',]
@@ -35,7 +35,7 @@ dataList <- list("Total" = dataOg,
                  "Lodz" = dataLo,
                  "Poznan" = dataPo)
 
-# Interfejs użytkownika
+# User interface
 ui <- fluidPage(
   theme = shinytheme('darkly'),
   navbarPage("Hotels",
@@ -120,10 +120,10 @@ ui <- fluidPage(
   )
 )
 
-# Serwer
+# Server
 server <- function(input, output) {
   datasetInput <- reactive({
-    ## Wybór miasta
+    ## The choice of city
     dataset <- switch(input$selectCity,
                       "Total" = dataOg,
                       "Warsaw" = dataWa,
@@ -132,13 +132,13 @@ server <- function(input, output) {
                       "Lodz" = dataLo,
                       "Poznan" = dataPo)
     
-    ## Wybór przedziału cenowego
+    ## Price range selection
     dataset <- dataset[(dataset$Price >= input$Price[1]) & (dataset$Price <= input$Price[2]),]
     
-    ## Wybór przedziału ocen
+    ## Rating range selection
     dataset <- dataset[(dataset$Rating >= input$Rating[1]) & (dataset$Rating <= input$Rating[2]),]
     
-    ## Wybór przedziału opinii
+    ## Reviews range selection
     dataset <- dataset[(dataset$Reviews >= input$Reviews[1]) & (dataset$Reviews <= input$Reviews[2]),]
     
     return(dataset)
@@ -255,5 +255,5 @@ server <- function(input, output) {
   
 }
 
-# Uruchamianie aplikacji Shiny
+# Launching Shiny app
 shinyApp(ui = ui, server = server)
