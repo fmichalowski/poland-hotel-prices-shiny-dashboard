@@ -30,3 +30,19 @@ To run the Shiny App locally, follow these steps:
 4. Open `app.R` in RStudio.
 5. Run the app by clicking on the "Run App" button within RStudio.
 6. The Shiny App should open in your default web browser, allowing you to interact with the data.
+
+## Usage
+
+At the top of the page, there are tabs that allow you to switch between charts. On the left side of each page, there is a panel that allows you to specify the range of the dataset and the variables to be plotted on the chart. In the central part of the page, there is the main chart.
+
+## License
+
+This project is licensed under the [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) license.
+
+- **Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)**
+
+For details, please see the [license file](LICENSE.md).
+
+
+
+
