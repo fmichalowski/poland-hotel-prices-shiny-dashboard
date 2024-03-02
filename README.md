@@ -37,7 +37,7 @@ At the top of the page, there are tabs that allow you to switch between charts. 
 
 ## License
 
-This project is licensed under the [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) license.
+This project is licensed under the [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/) license.
 
 - **Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)**
 
